@@ -26,6 +26,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import com.jfb.movieflix.dto.MovieDTO;
+import com.jfb.movieflix.dto.ReviewDTO;
+import com.jfb.movieflix.repositories.MovieRepository;
+
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional

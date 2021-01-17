@@ -22,6 +22,8 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jfb.movieflix.dto.ReviewDTO;
+import com.jfb.movieflix.repositories.ReviewRepository;
 
 @SpringBootTest
 @AutoConfigureMockMvc
