@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Review {
@@ -13,14 +15,20 @@ public class Review {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
   private String text;
+
+  @ManyToOne
+  @JoinColumn(name = "movie_id")
+  private Movie movie;
 
   public Review() {
   }
 
-  public Review(Long id, String text) {
+  public Review(Long id, String text, Genre genre, Movie movie) {
     this.id = id;
     this.text = text;
+    this.movie = movie;
   }
 
   public Long getId() {
@@ -37,6 +45,14 @@ public class Review {
 
   public void setText(String text) {
     this.text = text;
+  }
+
+  public Movie getMovie() {
+    return this.movie;
+  }
+
+  public void setMovie(Movie movie) {
+    this.movie = movie;
   }
 
   @Override

@@ -1,12 +1,17 @@
 package com.jfb.movieflix.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Movie implements Serializable {
@@ -15,23 +20,33 @@ public class Movie implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  
+
   private String title;
   private String subTitle;
   private Integer year;
   private String imgUrl;
   private String synopsis;
 
+  @ManyToOne
+  @JoinColumn(name = "genre_id")
+  private Genre genre;
+
+  @OneToMany(mappedBy = "movie")
+  private List<Review> reviews = new ArrayList<>();
+
   public Movie() {
   }
 
-  public Movie(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis) {
+  public Movie(Long id, String title, String subTitle, Integer year, 
+    String imgUrl, String synopsis, Genre genre) {
+
     this.id = id;
     this.title = title;
     this.subTitle = subTitle;
     this.year = year;
     this.imgUrl = imgUrl;
     this.synopsis = synopsis;
+    this.genre = genre;
   }
 
   public Long getId() {
@@ -80,6 +95,22 @@ public class Movie implements Serializable {
 
   public void setSynopsis(String synopsis) {
     this.synopsis = synopsis;
+  }
+
+  public Genre getGenre() {
+    return this.genre;
+  }
+
+  public void setGenre(Genre genre) {
+    this.genre = genre;
+  }
+
+  public List<Review> getReviews() {
+    return this.reviews;
+  }
+
+  public void setReviews(List<Review> reviews) {
+    this.reviews = reviews;
   }
 
   @Override
