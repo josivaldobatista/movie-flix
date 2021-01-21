@@ -12,8 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tb_movie")
 public class Movie implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -22,7 +24,7 @@ public class Movie implements Serializable {
   private Long id;
 
   private String title;
-  private String subTitle;
+  private String subtitle;
   private Integer year;
   private String imgUrl;
   private String synopsis;
@@ -37,12 +39,12 @@ public class Movie implements Serializable {
   public Movie() {
   }
 
-  public Movie(Long id, String title, String subTitle, Integer year, 
+  public Movie(Long id, String title, String subtitle, Integer year, 
     String imgUrl, String synopsis, Genre genre) {
 
     this.id = id;
     this.title = title;
-    this.subTitle = subTitle;
+    this.subtitle = subtitle;
     this.year = year;
     this.imgUrl = imgUrl;
     this.synopsis = synopsis;
@@ -65,12 +67,12 @@ public class Movie implements Serializable {
     this.title = title;
   }
 
-  public String getSubTitle() {
-    return this.subTitle;
+  public String getSubtitle() {
+    return this.subtitle;
   }
 
-  public void setSubTitle(String subTitle) {
-    this.subTitle = subTitle;
+  public void setSubtitle(String subtitle) {
+    this.subtitle = subtitle;
   }
 
   public Integer getYear() {
